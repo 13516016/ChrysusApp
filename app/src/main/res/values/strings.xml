@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Chrysus</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="navigation_pay">Pay</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="payment_fragment">Payment Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="navigation_history">History</string>
+    <string name="history_fragment">History Fragment</string>
+    <string name="name_placeholder">Tyrion Lannister</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="balance_placeholder">Rp 1.000.000</string>
+    <string name="current_temperature">Temperature</string>
+    <string name="temperature_placeholder">26°C</string>
+    <string name="main_features_headline">Main Features</string>
+    <string name="nfc_pay">NFC Pay</string>
+    <string name="qr_pay">QR Pay</string>
+    <string name="send_money">Send Money</string>
+    <string name="receive_money">Receive Money</string>
+    <string name="chrysus_news_header">Chrysus News</string>
+</resources>
