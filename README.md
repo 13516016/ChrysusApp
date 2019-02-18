@@ -1,3 +1,0 @@
-# ChrysusApp
-
-Chrysus Mobile App 
