@@ -94,8 +94,7 @@
             <LinearLayout style="@style/main_features_layout_style">
                 <ImageView
                     android:padding="@dimen/small_gap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/feature_image"
+                    style="@style/main_features_image_style"
                     android:src="@drawable/nfc"/>
                 <TextView
                     style="@style/main_features_subtitle_style"
