@@ -31,4 +31,6 @@
     <string name="sign_in">SIGN IN</string>
     <string name="sign_in_to_chrysus">Sign In</string>
     <string name="logout">Logout</string>
+    <string name="completed_payment">Completed</string>
+    <string name="payment_history">PAYMENT HISTORY</string>
 </resources>
