@@ -1,8 +1,6 @@
-package com.example.chrysus.home;
+package com.example.chrysus.home.adapter;
 
 import android.content.Context;
-import android.media.Image;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,8 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.chrysus.R;
-
-import org.w3c.dom.Text;
+import com.example.chrysus.home.model.News;
 
 import java.util.ArrayList;
 
@@ -63,9 +60,9 @@ public class NewsDataAdapter extends RecyclerView.Adapter<NewsDataAdapter.NewsVi
     public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, int i) {
         News news = newsList.get(i);
 
-        newsViewHolder.newsTitle.setText(news.title);
+        newsViewHolder.newsTitle.setText(news.getTitle());
         Glide.with(context)
-                .load(news.imagePath)
+                .load(news.getImagePath())
                 .apply(new RequestOptions().override(250,200))
                 .into(newsViewHolder.newsImage);
     }

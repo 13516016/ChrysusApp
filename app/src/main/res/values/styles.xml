@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -59,6 +59,14 @@
         <item name="android:textSize">@dimen/regular_text</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="authentication_form">
+        <item name="android:layout_marginTop">@dimen/large_gap</item>
+        <item name="android:layout_marginLeft">@dimen/large_gap</item>
+        <item name="android:layout_marginRight">@dimen/large_gap</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>

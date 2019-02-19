@@ -26,4 +26,9 @@
     <string name="receive_money">Receive Money</string>
     <string name="chrysus_news_header">Chrysus News</string>
     <string name="news_title_placeholder">News Title</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_in_to_chrysus">Sign In</string>
+    <string name="logout">Logout</string>
 </resources>

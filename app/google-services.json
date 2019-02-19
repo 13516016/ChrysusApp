@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "587570561495",
+    "firebase_url": "https://chrysus-44203.firebaseio.com",
+    "project_id": "chrysus-44203",
+    "storage_bucket": "chrysus-44203.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587570561495:android:641be70be3eec448",
+        "android_client_info": {
+          "package_name": "com.example.chrysus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587570561495-3tua78abjim788jun1fqc0vid98irslq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chrysus",
+            "certificate_hash": "408fc323ca6288863571d14d9aa468a505096e0e"
+          }
+        },
+        {
+          "client_id": "587570561495-619blp7s3ge1jldt8a2dt9phpn6qmj8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7VnNBNXDNxhTjkIQ5odJnacLdhOp7it4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587570561495-619blp7s3ge1jldt8a2dt9phpn6qmj8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
