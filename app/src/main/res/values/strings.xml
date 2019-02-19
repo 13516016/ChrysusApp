@@ -25,4 +25,5 @@
     <string name="send_money">Send Money</string>
     <string name="receive_money">Receive Money</string>
     <string name="chrysus_news_header">Chrysus News</string>
+    <string name="news_title_placeholder">News Title</string>
 </resources>

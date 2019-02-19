@@ -32,6 +32,8 @@
         <item name="android:layout_marginRight">@dimen/small_gap</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
+        <item name="android:elevation">@dimen/small_gap</item>
+
     </style>
 
     <style name="main_features_image_style">
@@ -41,14 +43,17 @@
     </style>
 
     <style name="section_style">
-        <item name="android:layout_marginTop">@dimen/large_gap</item>
+        <item name="android:layout_marginTop">@dimen/regular_gap</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/regular_gap</item>
         <item name="android:orientation">vertical</item>
     </style>
 
     <style name="section_header_style">
-        <item name="android:padding">@dimen/regular_gap</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:layout_marginBottom">@dimen/small_gap</item>
+        <item name="android:padding">@dimen/small_gap</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/regular_text</item>
