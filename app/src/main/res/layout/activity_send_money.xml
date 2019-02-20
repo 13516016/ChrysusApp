@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".payment.NFCPayActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:text="@string/send_money_headline"
+        android:textSize="@dimen/regular_text"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        style="@style/white_text"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/large_gap">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/regular_gap">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textSize="@dimen/regular_text"
+            style="@style/red_text"/>
+        <EditText
+            android:id="@+id/send_money_phone_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_gap"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/transfer_amount"
+            android:textSize="@dimen/regular_text"
+            style="@style/red_text"/>
+        <EditText
+            android:id="@+id/send_money_amount_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

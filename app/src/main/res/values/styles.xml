@@ -37,7 +37,7 @@
     </style>
 
     <style name="main_features_image_style">
-        <item name="android:padding">@dimen/small_gap</item>
+        <item name="android:padding">@dimen/regular_gap</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/feature_image</item>
         <item name="android:tint">@color/colorPrimary</item>

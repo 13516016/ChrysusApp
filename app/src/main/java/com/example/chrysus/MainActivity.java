@@ -14,7 +14,6 @@ import com.example.chrysus.util.pager.NonSwipeableViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
-    NonSwipeableViewPager viewPager;
     BaseController mainController;
 
     @Override

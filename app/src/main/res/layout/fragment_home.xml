@@ -91,11 +91,12 @@
             android:padding="@dimen/regular_gap"
             android:background="@android:color/white"
             android:minHeight="100dp">
-            <LinearLayout style="@style/main_features_layout_style">
+            <LinearLayout
+                android:id="@+id/nfc_pay"
+                style="@style/main_features_layout_style">
                 <ImageView
                     android:padding="@dimen/small_gap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/feature_image"
+                    style="@style/main_features_image_style"
                     android:src="@drawable/nfc"/>
                 <TextView
                     style="@style/main_features_subtitle_style"
@@ -103,6 +104,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/qr_pay"
                 style="@style/main_features_layout_style">
                 <ImageView
                     android:src="@drawable/nfc"
@@ -113,6 +115,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/send_money"
                 style="@style/main_features_layout_style">
                 <ImageView
                     style="@style/main_features_image_style"
@@ -123,6 +126,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/receive_money"
                 style="@style/main_features_layout_style">
                 <ImageView
                     style="@style/main_features_image_style"
@@ -144,6 +148,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/news_rv"
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"/>

@@ -58,15 +58,17 @@
             android:padding="@dimen/small_gap"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/city"
                 android:layout_marginTop="@dimen/regular_gap"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:textAlignment="center"
                 style="@style/white_text"
-                android:textSize="@dimen/small_text"
-                android:text="@string/current_temperature"/>
+                android:textSize="@dimen/medium_text"
+                android:text="@string/city_placeholder"/>
             <TextView
+                android:id="@+id/temperature"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
@@ -91,7 +93,9 @@
             android:padding="@dimen/regular_gap"
             android:background="@android:color/white"
             android:minHeight="100dp">
-            <LinearLayout style="@style/main_features_layout_style">
+            <LinearLayout
+                android:id="@+id/nfc_pay"
+                style="@style/main_features_layout_style">
                 <ImageView
                     android:padding="@dimen/small_gap"
                     style="@style/main_features_image_style"
@@ -102,9 +106,10 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/qr_pay"
                 style="@style/main_features_layout_style">
                 <ImageView
-                    android:src="@drawable/nfc"
+                    android:src="@drawable/qr_code_placeholder"
                     style="@style/main_features_image_style" />
                 <TextView
                     style="@style/main_features_subtitle_style"
@@ -112,20 +117,22 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/send_money"
                 style="@style/main_features_layout_style">
                 <ImageView
                     style="@style/main_features_image_style"
-                    android:src="@drawable/nfc"/>
+                    android:src="@drawable/paper_plane"/>
                 <TextView
                     style="@style/main_features_subtitle_style"
                     android:text="@string/send_money"
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/receive_money"
                 style="@style/main_features_layout_style">
                 <ImageView
                     style="@style/main_features_image_style"
-                    android:src="@drawable/nfc"/>
+                    android:src="@drawable/receive_money"/>
                 <TextView
                     style="@style/main_features_subtitle_style"
                     android:text="@string/receive_money"
