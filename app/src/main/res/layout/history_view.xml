@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/payment_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="McDonald's Dago"
+        android:layout_marginLeft="@dimen/small_gap"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <TextView
+        android:id="@+id/payment_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small_gap"
+        android:layout_marginBottom="@dimen/regular_gap"
+        android:text="Payment Completed"/>
+
+    <TextView
+        android:id="@+id/payment_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IDR 1,470,000"
+        android:layout_marginLeft="@dimen/small_gap"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
+
+    <TextView
+        android:id="@+id/payment_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        android:text="5 Jan 19, 16.33"
+        android:layout_marginRight="@dimen/regular_gap"/>
+</LinearLayout>
