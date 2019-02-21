@@ -33,4 +33,13 @@
     <string name="logout">Logout</string>
     <string name="completed_payment">Completed</string>
     <string name="payment_history">PAYMENT HISTORY</string>
+    <string name="nfc_pay_text">PLACE YOUR PHONE NEAR THE SENSOR!</string>
+    <string name="nfc_pay_headline">NFC PAY</string>
+    <string name="qr_pay_headline">QR PAY</string>
+    <string name="receive_money_headline">RECEIVE MONEY</string>
+    <string name="receive_money_text">SCAN WITH THE CHRYSUS APP!</string>
+    <string name="send_money_headline">SEND MONEY</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="transfer_amount">Transfer Amount</string>
+    <string name="city_placeholder">Bandung</string>
 </resources>

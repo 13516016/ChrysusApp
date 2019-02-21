@@ -16,7 +16,7 @@ public class MiddlewareActivity extends Activity {
 
         Intent activityIntent;
 
-        boolean isDebug = true;
+        boolean isDebug = false;
         // go straight to main if a token is stored
         if (!isDebug) {
             activityIntent = new Intent(this, MainActivity.class);
