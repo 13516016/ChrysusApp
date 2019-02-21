@@ -38,5 +38,5 @@
     <string name="payment_history">PAYMENT HISTORY</string>
     <string name="name">Name</string>
     <string name="Phone_Number">Phone Number</string>
-    <string name="Jenis_Kelamin">Jenis Kelamin</string>
+    <string name="Jenis_Kelamin">Gender</string>
 </resources>
