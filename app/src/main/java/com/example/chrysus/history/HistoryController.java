@@ -11,7 +11,7 @@ import com.example.chrysus.R;
 import java.util.ArrayList;
 
 public class HistoryController extends BaseController {
-    private RecyclerView newsRecyclerView;
+    private RecyclerView paymentRecyclerView;
 
     public HistoryController(Context context, View view) {
         super(context, view);
@@ -20,9 +20,10 @@ public class HistoryController extends BaseController {
     @Override
     public View initializeView() {
         super.initializeView();
-        newsRecyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false));
+        paymentRecyclerView.setHasFixedSize(true);
+        paymentRecyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false));
         PaymentAdapter paymentDataAdapter = new PaymentAdapter(this.context, getPaymentsData());
-        newsRecyclerView.setAdapter(paymentDataAdapter);
+        paymentRecyclerView.setAdapter(paymentDataAdapter);
 
         return this.view;
     }
@@ -30,12 +31,13 @@ public class HistoryController extends BaseController {
     @Override
     public void registerView() {
         super.registerView();
-        newsRecyclerView = view.findViewById(R.id.completed_payment);
+        paymentRecyclerView = view.findViewById(R.id.completed_payment);
     }
 
     private ArrayList<Payment> getPaymentsData(){
         ArrayList<Payment> paymentsList = new ArrayList<>();
-        paymentsList.add(new Payment("McDonald Dago", "Completed Payment", "1470000", "5 Jan 2019"));
+        paymentsList.add(new Payment("McDonald Dago", "Payment Completed", "1470000", "5 Jan 2019 16.33"));
+        paymentsList.add(new Payment("Geprek Bensu Dago", "Payment Completed", "1300000", "3 December 2018 08.53"));
         return paymentsList;
     }
 }
