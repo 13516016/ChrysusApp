@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.chrysus.BaseController;
 import com.example.chrysus.R;
+import com.example.chrysus.history.HistoryController;
 import com.example.chrysus.home.model.News;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         controller = new HomeController(container.getContext(), view);
-        return ((HomeController) controller).initializeView();
+        return ((HistoryController) controller).initializeView();
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.chrysus.BaseController;
 import com.example.chrysus.R;
 import com.example.chrysus.home.model.News;
 
@@ -18,8 +19,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class HistoryFragment extends Fragment {
-    private ArrayList<Payment> paymentList;
-    Context context;
+    private BaseController controller;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -29,14 +29,14 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false);
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        controller = new HistoryController(container.getContext(), view);
+        return ((HistoryController) controller).initializeView();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.completed_payment);
-        PaymentAdapter mAdapter = new PaymentAdapter(this, paymentList);
     }
 
 }
