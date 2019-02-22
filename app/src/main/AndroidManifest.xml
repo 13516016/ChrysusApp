@@ -16,7 +16,7 @@
         <activity android:name=".payment.NFCPayActivity" />
         <activity android:name=".payment.QRPayActivity" />
         <activity
-            android:name=".MiddlewareActivity"
+            android:name=".util.MiddlewareActivity"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +28,9 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
+
+        <meta-data android:name="news_url" android:value="http://198.12.106.137:5000/news/"/>
+        <meta-data android:name="account_url" android:value="http://198.12.106.137:5000/payment/"/>
     </application>
 
 </manifest>
