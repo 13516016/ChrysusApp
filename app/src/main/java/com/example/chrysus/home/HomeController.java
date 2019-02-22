@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 import com.example.chrysus.BaseController;
+import com.example.chrysus.LocationTrack;
 import com.example.chrysus.R;
 import com.example.chrysus.home.adapter.NewsDataAdapter;
 import com.example.chrysus.home.model.News;
@@ -16,7 +20,9 @@ import com.example.chrysus.payment.QRPayActivity;
 import com.example.chrysus.payment.ReceiveMoneyActivity;
 import com.example.chrysus.payment.SendMoneyActivity;
 
+
 import java.util.ArrayList;
+
 
 public class HomeController extends BaseController {
 
@@ -25,6 +31,8 @@ public class HomeController extends BaseController {
     private LinearLayout qrPayLayout;
     private LinearLayout sendMoneyLayout;
     private LinearLayout receiveMoneyLayout;
+    private LocationTrack locationTrack;
+    private TextView city;
 
     public HomeController(Context context, View view) {
         super(context, view);
@@ -36,6 +44,7 @@ public class HomeController extends BaseController {
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false));
         NewsDataAdapter newsDataAdapter = new NewsDataAdapter(this.context, getNewsData());
         newsRecyclerView.setAdapter(newsDataAdapter);
+        setLocation();
         return this.view;
     }
 
@@ -47,11 +56,11 @@ public class HomeController extends BaseController {
         qrPayLayout = view.findViewById(R.id.qr_pay);
         sendMoneyLayout = view.findViewById(R.id.send_money);
         receiveMoneyLayout = view.findViewById(R.id.receive_money);
-        registerPaymentOnClickListener(new View[]{nfcPayLayout,qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
+        registerPaymentOnClickListener(new View[]{nfcPayLayout, qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
     }
 
-    private void registerPaymentOnClickListener(View[] paymentViews){
-        for (View view: paymentViews){
+    private void registerPaymentOnClickListener(View[] paymentViews) {
+        for (View view : paymentViews) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,7 +71,7 @@ public class HomeController extends BaseController {
     }
 
     private void routePayment(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.nfc_pay:
                 navigateToNFCPayActivity();
                 break;
@@ -78,7 +87,7 @@ public class HomeController extends BaseController {
         }
     }
 
-    private ArrayList<News> getNewsData(){
+    private ArrayList<News> getNewsData() {
         ArrayList<News> newsList = new ArrayList<>();
         newsList.add(new News("Hehe", "https://loremflickr.com/250/150"));
         newsList.add(new News("Hehe2", "https://loremflickr.com/250/150"));
@@ -86,24 +95,36 @@ public class HomeController extends BaseController {
         return newsList;
     }
 
-    private void navigateToQRPayActivity(){
+    private void navigateToQRPayActivity() {
         Intent intent = new Intent(context, QRPayActivity.class);
         context.startActivity(intent);
     }
 
-    private void navigateToNFCPayActivity(){
+    private void navigateToNFCPayActivity() {
         Intent intent = new Intent(context, NFCPayActivity.class);
         context.startActivity(intent);
     }
 
-    private void navigateToSendMoneyActivity(){
+    private void navigateToSendMoneyActivity() {
         Intent intent = new Intent(context, SendMoneyActivity.class);
         context.startActivity(intent);
     }
 
-    private void navigateToReceiveMoneyActivity(){
+    private void navigateToReceiveMoneyActivity() {
         Intent intent = new Intent(context, ReceiveMoneyActivity.class);
         context.startActivity(intent);
     }
 
+    public void setLocation() {
+        locationTrack = new LocationTrack(this.context);
+
+        if (locationTrack.canGetLocation()) {
+            city = view.findViewById(R.id.city);
+            double longitude = locationTrack.getLongitude();
+            double latitude = locationTrack.getLatitude();
+            Log.d("location", String.valueOf(longitude));
+        } else {
+            locationTrack.showSettingsAlert();
+        }
+    }
 }
