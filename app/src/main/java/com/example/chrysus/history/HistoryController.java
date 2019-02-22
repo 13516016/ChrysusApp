@@ -21,7 +21,7 @@ public class HistoryController extends BaseController {
     public View initializeView() {
         super.initializeView();
         paymentRecyclerView.setHasFixedSize(true);
-        paymentRecyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false));
+        paymentRecyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false));
         PaymentAdapter paymentDataAdapter = new PaymentAdapter(this.context, getPaymentsData());
         paymentRecyclerView.setAdapter(paymentDataAdapter);
 
@@ -36,7 +36,7 @@ public class HistoryController extends BaseController {
 
     private ArrayList<Payment> getPaymentsData(){
         ArrayList<Payment> paymentsList = new ArrayList<>();
-        paymentsList.add(new Payment("McDonald Dago", "Payment Completed", "1470000", "5 Jan 2019 16.33"));
+        paymentsList.add(new Payment("McDonald Dago", "Payment Completed", "1470000", "5 Jan 2019 20.33"));
         paymentsList.add(new Payment("Geprek Bensu Dago", "Payment Completed", "1300000", "3 December 2018 08.53"));
         return paymentsList;
     }
