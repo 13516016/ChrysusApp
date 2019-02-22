@@ -57,6 +57,8 @@ public class HomeController extends BaseController implements SensorEventListene
         sendMoneyLayout = view.findViewById(R.id.send_money);
         receiveMoneyLayout = view.findViewById(R.id.receive_money);
         temperatureTV = view.findViewById(R.id.temperature);
+        sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+
         registerPaymentOnClickListener(new View[]{nfcPayLayout,qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
     }
 
