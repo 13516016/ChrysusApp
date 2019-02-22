@@ -2,10 +2,16 @@ package com.example.chrysus.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chrysus.BaseController;
 import com.example.chrysus.R;
@@ -18,13 +24,16 @@ import com.example.chrysus.payment.SendMoneyActivity;
 
 import java.util.ArrayList;
 
-public class HomeController extends BaseController {
+public class HomeController extends BaseController implements SensorEventListener {
 
     private RecyclerView newsRecyclerView;
     private LinearLayout nfcPayLayout;
     private LinearLayout qrPayLayout;
     private LinearLayout sendMoneyLayout;
     private LinearLayout receiveMoneyLayout;
+    private SensorManager sensorManager;
+    private TextView temperatureTV;
+
 
     public HomeController(Context context, View view) {
         super(context, view);
@@ -47,6 +56,7 @@ public class HomeController extends BaseController {
         qrPayLayout = view.findViewById(R.id.qr_pay);
         sendMoneyLayout = view.findViewById(R.id.send_money);
         receiveMoneyLayout = view.findViewById(R.id.receive_money);
+        temperatureTV = view.findViewById(R.id.temperature);
         registerPaymentOnClickListener(new View[]{nfcPayLayout,qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
     }
 
@@ -106,4 +116,29 @@ public class HomeController extends BaseController {
         context.startActivity(intent);
     }
 
+    public void loadAmbientTemperature(){
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+
+        if (sensor != null){
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
+        } else {
+            Toast.makeText(context, "There is no Ambient Temperature Sensor!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void unregisterSensor(){
+        sensorManager.unregisterListener(this);
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.values.length > 0){
+            Float temperature = event.values[0];
+            temperatureTV.setText(temperature.toString());
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
 }

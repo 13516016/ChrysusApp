@@ -1,12 +1,18 @@
 package com.example.chrysus;
 
 import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.chrysus.util.pager.MainPagerAdapter;
@@ -16,14 +22,12 @@ public class MainController extends BaseController {
 
     private ViewPager viewPager;
     private Toolbar toolbar;
-    private ViewPager ambientBtn;
+    private float temperature;
+
+
 
     public MainController(Context context, View view) {
         super(context, view);
-    }
-
-    public void ambientView(){
-        ambientBtn = view.findViewById(R.id.temperature);
     }
 
     @Override
@@ -46,6 +50,5 @@ public class MainController extends BaseController {
     public Toolbar getToolbar() {
         return toolbar;
     }
-
 
 }
