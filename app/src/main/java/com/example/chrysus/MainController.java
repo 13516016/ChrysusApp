@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+
 import com.example.chrysus.util.pager.MainPagerAdapter;
 import com.example.chrysus.util.pager.NavigationViewPagerListener;
 
@@ -15,9 +16,14 @@ public class MainController extends BaseController {
 
     private ViewPager viewPager;
     private Toolbar toolbar;
+    private ViewPager ambientBtn;
 
     public MainController(Context context, View view) {
         super(context, view);
+    }
+
+    public void ambientView(){
+        ambientBtn = view.findViewById(R.id.temperature);
     }
 
     @Override
