@@ -1,6 +1,7 @@
 package com.example.chrysus.home;
 
 
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -44,7 +45,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((HomeController)controller).loadAmbientTemperature();
+        ((HomeController)controller).registerSensor();
     }
 
     @Override

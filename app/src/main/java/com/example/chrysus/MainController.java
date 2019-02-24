@@ -23,7 +23,7 @@ public class MainController extends BaseController {
     private ViewPager viewPager;
     private Toolbar toolbar;
     private float temperature;
-
+    private float maxValue;
 
 
     public MainController(Context context, View view) {

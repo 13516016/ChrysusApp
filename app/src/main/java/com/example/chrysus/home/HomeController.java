@@ -1,5 +1,10 @@
 package com.example.chrysus.home;
 
+//For light sensor
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -8,6 +13,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +30,7 @@ import com.example.chrysus.payment.SendMoneyActivity;
 
 import java.util.ArrayList;
 
-public class HomeController extends BaseController implements SensorEventListener {
+public class HomeController extends BaseController  {
 
     private RecyclerView newsRecyclerView;
     private LinearLayout nfcPayLayout;
@@ -33,6 +39,13 @@ public class HomeController extends BaseController implements SensorEventListene
     private LinearLayout receiveMoneyLayout;
     private SensorManager sensorManager;
     private TextView temperatureTV;
+
+    //For light sensor
+    private Sensor lightSensor;
+    private SensorEventListener lightEventListener;
+    private View root;
+
+    private float maxValue;
 
 
     public HomeController(Context context, View view) {
@@ -59,7 +72,9 @@ public class HomeController extends BaseController implements SensorEventListene
         temperatureTV = view.findViewById(R.id.temperature);
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
 
+
         registerPaymentOnClickListener(new View[]{nfcPayLayout,qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
+
     }
 
     private void registerPaymentOnClickListener(View[] paymentViews){
@@ -118,29 +133,35 @@ public class HomeController extends BaseController implements SensorEventListene
         context.startActivity(intent);
     }
 
-    public void loadAmbientTemperature(){
-        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
-
-        if (sensor != null){
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
+    public void registerSensor(){
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        if (lightSensor == null) {
+            Toast.makeText(context, "The device has no light sensor !", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "There is no Ambient Temperature Sensor!", Toast.LENGTH_LONG).show();
+            Log.d("TEST", "TEST");
         }
+
+        // max value for light sensor
+        maxValue = lightSensor.getMaximumRange();
+
+        lightEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                float value = event.values[0];
+
+                int newValue = (int) (255f * value / maxValue);
+                temperatureTV.setText(String.valueOf(value));
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+        sensorManager.registerListener(lightEventListener, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     public void unregisterSensor(){
-        sensorManager.unregisterListener(this);
-    }
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (event.values.length > 0){
-            Float temperature = event.values[0];
-            temperatureTV.setText(temperature.toString());
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        sensorManager.unregisterListener(lightEventListener);
     }
 }

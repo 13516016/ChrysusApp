@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     BaseController mainController;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         ((MainController) mainController).setupViewPager(getSupportFragmentManager());
         ((MainController) mainController).registerNavigationListener();
         setSupportActionBar(((MainController) mainController).getToolbar());
+
+
     }
 
     @Override
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //Ambient Temperature
+    //For light sensor
     @Override
     protected void onResume(){
         super.onResume();
@@ -56,15 +57,4 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
     }
-
-
-//    @Override
-//    public void onSensorChanged(SensorEvent sensorEvent){
-//
-//    }
-//
-////    @Override
-////    public void onAccuracyChanged(Sensor sensor, int i){
-////
-////    }
 }
