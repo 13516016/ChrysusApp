@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         ((MainController) mainController).setupViewPager(getSupportFragmentManager());
         ((MainController) mainController).registerNavigationListener();
         setSupportActionBar(((MainController) mainController).getToolbar());
+        ((MainController) mainController).scheduleAlarm();
     }
 
     @Override
