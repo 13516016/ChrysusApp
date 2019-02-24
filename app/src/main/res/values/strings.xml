@@ -15,8 +15,11 @@
     <string name="navigation_history">History</string>
     <string name="history_fragment">History Fragment</string>
     <string name="name_placeholder">Tyrion Lannister</string>
+    <string name="user_email">tyrion@gmail.com</string>
     <string name="current_balance">Current Balance</string>
     <string name="balance_placeholder">Rp 1.000.000</string>
+    <string name="user_phone_number">08112234456</string>
+    <string name="user_sex">Male</string>
     <string name="current_temperature">Temperature</string>
     <string name="temperature_placeholder">26°C</string>
     <string name="main_features_headline">Main Features</string>
@@ -31,6 +34,7 @@
     <string name="sign_in">SIGN IN</string>
     <string name="sign_in_to_chrysus">Sign In</string>
     <string name="logout">Logout</string>
+    <string name="payment_history">PAYMENT HISTORY</string>
     <string name="nfc_pay_text">PLACE YOUR PHONE NEAR THE SENSOR!</string>
     <string name="nfc_pay_headline">NFC PAY</string>
     <string name="qr_pay_headline">QR PAY</string>
@@ -40,4 +44,13 @@
     <string name="phone_number">Phone Number</string>
     <string name="transfer_amount">Transfer Amount</string>
     <string name="city_placeholder">Bandung</string>
+    <string name="send_money_send_btn_text">SEND</string>
+    <string name="completed_payment">Completed</string>
+    <string name="name">Name</string>
+    <string name="Phone_Number">Phone Number</string>
+    <string name="Jenis_Kelamin">Gender</string>
+    <string name="address">Address</string>
+    <string name="pref_news_description_recommendations">Enable news recommendations</string>
+    <string name="pref_news_recommendations">News Recommendation</string>
+    <string name="pref_title_new_message_notifications">Notification</string>
 </resources>

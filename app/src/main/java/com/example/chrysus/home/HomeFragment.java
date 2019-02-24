@@ -3,6 +3,7 @@ package com.example.chrysus.home;
 
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.chrysus.BaseController;
 import com.example.chrysus.R;
+import com.example.chrysus.history.HistoryController;
 import com.example.chrysus.home.model.News;
 
 import java.util.ArrayList;
@@ -45,6 +47,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        ((HomeController) controller).toggleNewsSection();
+        ((HomeController) controller).getUserData();
+        ((HomeController) controller).getNewsData();
         ((HomeController)controller).registerSensor();
     }
 
