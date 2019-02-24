@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.chrysus.BaseController;
+import com.example.chrysus.LocationTrack;
 import com.example.chrysus.R;
 import com.example.chrysus.home.adapter.NewsDataAdapter;
 import com.example.chrysus.home.model.News;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class HomeController extends BaseController {
 
@@ -36,6 +38,11 @@ public class HomeController extends BaseController {
     private FirebaseAuth mAuth;
 
 
+
+
+    private LocationTrack locationTrack;
+    private TextView city;
+
     public HomeController(Context context, View view) {
         super(context, view);
     }
@@ -47,6 +54,7 @@ public class HomeController extends BaseController {
         newsDataAdapter = new NewsDataAdapter(this.context, newsRecyclerView, getNewsData());
         newsRecyclerView.setAdapter(newsDataAdapter);
         getUserData();
+        setLocation();
         return this.view;
     }
 
@@ -58,6 +66,7 @@ public class HomeController extends BaseController {
         qrPayLayout = view.findViewById(R.id.qr_pay);
         sendMoneyLayout = view.findViewById(R.id.send_money);
         receiveMoneyLayout = view.findViewById(R.id.receive_money);
+        registerPaymentOnClickListener(new View[]{nfcPayLayout, qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
         userFullnameTV = view.findViewById(R.id.user_fullname);
         userBalanceTV = view.findViewById(R.id.user_balance);
         homeRouter = new HomeRouter(this.context);
@@ -65,8 +74,8 @@ public class HomeController extends BaseController {
         registerPaymentOnClickListener(new View[]{nfcPayLayout,qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
     }
 
-    private void registerPaymentOnClickListener(View[] paymentViews){
-        for (View view: paymentViews){
+    private void registerPaymentOnClickListener(View[] paymentViews) {
+        for (View view : paymentViews) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,7 +86,7 @@ public class HomeController extends BaseController {
     }
 
     private void routePayment(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.nfc_pay:
                 homeRouter.navigateToNFCPayActivity();
                 break;
@@ -138,4 +147,16 @@ public class HomeController extends BaseController {
         }
     }
 
+    public void setLocation() {
+        locationTrack = new LocationTrack(this.context);
+
+        if (locationTrack.canGetLocation()) {
+            city = view.findViewById(R.id.city);
+            double longitude = locationTrack.getLongitude();
+            double latitude = locationTrack.getLatitude();
+            Log.d("location", String.valueOf(longitude));
+        } else {
+            locationTrack.showSettingsAlert();
+        }
+    }
 }
