@@ -47,4 +47,15 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.toolbar, menu);
         return true;
     }
+
+    //For proximity sensor
+    @Override
+    protected void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+    }
 }

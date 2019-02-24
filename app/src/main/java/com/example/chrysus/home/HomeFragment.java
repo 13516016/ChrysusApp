@@ -49,5 +49,12 @@ public class HomeFragment extends Fragment {
         ((HomeController) controller).toggleNewsSection();
         ((HomeController) controller).getUserData();
         ((HomeController) controller).getNewsData();
+        ((HomeController) controller).registerSensor(getActivity());
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        ((HomeController)controller).unregisterSensor();
     }
 }

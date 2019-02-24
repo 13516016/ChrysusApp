@@ -1,5 +1,6 @@
 package com.example.chrysus.home;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+//For proximity sensor
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.chrysus.BaseController;
 import com.example.chrysus.LocationTrack;
@@ -40,6 +51,11 @@ public class HomeController extends BaseController {
     private LocationTrack locationTrack;
     private TextView city;
 
+    //For proximity sensor
+    private SensorManager sensorManager;
+    private Sensor proximitySensor;
+    private SensorEventListener proximitySensorListener;
+
     public HomeController(Context context, View view) {
         super(context, view);
     }
@@ -67,6 +83,7 @@ public class HomeController extends BaseController {
         userBalanceTV = view.findViewById(R.id.user_balance);
         homeRouter = new HomeRouter(this.context);
         mAuth = FirebaseAuth.getInstance();
+        sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
     private void registerPaymentOnClickListener(View[] paymentViews) {
@@ -150,5 +167,34 @@ public class HomeController extends BaseController {
         } else {
             newsSectionLayout.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void registerSensor(final Activity activity){
+        proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        if (proximitySensor == null) {
+            Toast.makeText(context, "Proximity sensor isn't available!", Toast.LENGTH_LONG).show();
+        }
+
+        proximitySensorListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                if (event.values[0] < proximitySensor.getMaximumRange()) {
+                    activity.getWindow().getDecorView().setBackgroundColor(Color.RED);
+                } else {
+                    activity.getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+        sensorManager.registerListener(proximitySensorListener, proximitySensor, 2 * 1000 * 1000);
+    }
+
+    public void unregisterSensor(){
+        sensorManager.unregisterListener(proximitySensorListener);
     }
 }
