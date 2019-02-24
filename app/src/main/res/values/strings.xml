@@ -42,4 +42,5 @@
     <string name="phone_number">Phone Number</string>
     <string name="transfer_amount">Transfer Amount</string>
     <string name="city_placeholder">Bandung</string>
+    <string name="send_money_send_btn_text">SEND</string>
 </resources>

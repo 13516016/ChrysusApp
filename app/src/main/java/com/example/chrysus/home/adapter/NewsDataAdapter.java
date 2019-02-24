@@ -1,6 +1,8 @@
 package com.example.chrysus.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,15 +19,24 @@ import com.example.chrysus.home.model.News;
 import java.util.ArrayList;
 
 public class NewsDataAdapter extends RecyclerView.Adapter<NewsDataAdapter.NewsViewHolder> {
+    private final RecyclerView rv;
     private ArrayList<News> newsList;
     Context context;
 
-    public NewsDataAdapter(ArrayList<News> newsList){
-        this.newsList = newsList;
-    }
+    private View.OnClickListener newsOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int itemPosition = rv.getChildLayoutPosition(v);
+            String newsUrl = newsList.get(itemPosition).getNewsLink();
+            Intent internetIntent = new Intent(Intent.ACTION_VIEW);
+            internetIntent.setData(Uri.parse(newsUrl));
+            context.startActivity(internetIntent);
+        }
+    };
 
-    public NewsDataAdapter(Context context, ArrayList<News> newsList) {
+    public NewsDataAdapter(Context context, RecyclerView rv, ArrayList<News> newsList) {
         this.newsList = newsList;
+        this.rv = rv;
         this.context = context;
     }
 
@@ -37,7 +48,6 @@ public class NewsDataAdapter extends RecyclerView.Adapter<NewsDataAdapter.NewsVi
         return newsList;
     }
 
-
     static class NewsViewHolder extends RecyclerView.ViewHolder {
         TextView newsTitle;
         ImageView newsImage;
@@ -48,11 +58,13 @@ public class NewsDataAdapter extends RecyclerView.Adapter<NewsDataAdapter.NewsVi
         }
     }
 
+
     @NonNull
     @Override
     public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View newsListView = inflater.inflate(R.layout.news_view, parent, false);
+        newsListView.setOnClickListener(newsOnClickListener);
         return new NewsViewHolder(newsListView);
     }
 
@@ -63,8 +75,9 @@ public class NewsDataAdapter extends RecyclerView.Adapter<NewsDataAdapter.NewsVi
         newsViewHolder.newsTitle.setText(news.getTitle());
         Glide.with(context)
                 .load(news.getImagePath())
-                .apply(new RequestOptions().override(250,200))
+                .apply(new RequestOptions().centerCrop())
                 .into(newsViewHolder.newsImage);
+
     }
 
     @Override
