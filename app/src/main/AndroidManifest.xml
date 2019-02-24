@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.chrysus">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".payment.ReceiveMoneyActivity"></activity>
-        <activity android:name=".payment.SendMoneyActivity" />
-        <activity android:name=".payment.NFCPayActivity" />
-        <activity android:name=".payment.QRPayActivity" />
+        <activity android:name=".payment.activity.ReceiveMoneyActivity"></activity>
+        <activity android:name=".payment.activity.SendMoneyActivity" />
+        <activity android:name=".payment.activity.NFCPayActivity" />
+        <activity android:name=".payment.activity.QRPayActivity" />
         <activity
-            android:name=".MiddlewareActivity"
+            android:name=".util.MiddlewareActivity"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,5 +29,16 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
+
+        <service android:name="com.example.chrysus.FCMRegisterService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data android:name="news_url" android:value="http://198.12.106.137:5000/news/"/>
+        <meta-data android:name="search_by_uid_url" android:value="http://198.12.106.137:5000/payment/firebase/"/>
+        <meta-data android:name="payment_url" android:value="http://198.12.106.137:5000/payment/pay"/>
+        <meta-data android:name="register_device_url" android:value="http://198.12.106.137:5000/payment/register"/>
     </application>
 </manifest>

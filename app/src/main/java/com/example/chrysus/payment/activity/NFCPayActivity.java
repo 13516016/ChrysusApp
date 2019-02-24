@@ -1,4 +1,4 @@
-package com.example.chrysus.payment;
+package com.example.chrysus.payment.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
