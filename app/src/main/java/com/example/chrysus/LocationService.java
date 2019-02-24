@@ -23,12 +23,10 @@ import java.util.Locale;
 public class LocationService implements LocationListener {
 
     //The minimum distance to change updates in meters
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 10 meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 
     //The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 0;//1000 * 60 * 1; // 1 minute
-
-    private final static boolean forceNetwork = false;
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 30; // 30 minute
 
     private static LocationService instance = null;
 
