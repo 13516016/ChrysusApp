@@ -36,6 +36,14 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name=".PromoService"
+            android:exported="false" />
+        <receiver
+            android:name=".AlarmReceiver"
+            android:process=":remote" />
+
+
         <meta-data android:name="news_url" android:value="http://198.12.106.137:5000/news/"/>
         <meta-data android:name="search_by_uid_url" android:value="http://198.12.106.137:5000/payment/firebase/"/>
         <meta-data android:name="payment_url" android:value="http://198.12.106.137:5000/payment/pay"/>
