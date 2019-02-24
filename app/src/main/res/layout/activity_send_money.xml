@@ -9,14 +9,8 @@
 
     <TextView
         android:id="@+id/send_money_bar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
         android:text="@string/send_money_headline"
-        android:textSize="@dimen/regular_text"
-        android:textAlignment="center"
-        android:gravity="center_vertical"
-        style="@style/white_text"/>
+        style="@style/action_bar"/>
 
 
     <LinearLayout
