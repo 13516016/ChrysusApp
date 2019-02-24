@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         ((MainController) mainController).setupViewPager(getSupportFragmentManager());
         ((MainController) mainController).registerNavigationListener();
         setSupportActionBar(((MainController) mainController).getToolbar());
-
-
+        setReminder();
     }
 
     @Override
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setReminder();
     }
 
     private void setReminder(){

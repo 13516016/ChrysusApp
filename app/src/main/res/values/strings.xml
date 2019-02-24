@@ -53,4 +53,5 @@
     <string name="pref_news_description_recommendations">Enable news recommendations</string>
     <string name="pref_news_recommendations">News Recommendation</string>
     <string name="pref_title_new_message_notifications">Notification</string>
+    <string name="ambient_light">Ambient light</string>
 </resources>

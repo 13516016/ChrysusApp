@@ -1,7 +1,11 @@
 package com.example.chrysus;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
@@ -22,6 +26,8 @@ public class FCMRegisterService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+        String channelId = "chrysus-2";
+        String channelName = "payment";
 
         Log.d("TEST", remoteMessage.getData().get("message"));
         Notification notification = new NotificationCompat.Builder(this)
@@ -31,7 +37,14 @@ public class FCMRegisterService extends FirebaseMessagingService {
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .build();
         NotificationManagerCompat manager = NotificationManagerCompat.from(getApplicationContext());
-        manager.notify(123, notification);
+        manager.notify(12345, notification);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(channelId, channelName , NotificationManager.IMPORTANCE_LOW);
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.createNotificationChannel(mChannel);
+            mNotificationManager.notify(12345 , notification);
+        }
     }
 
     @Override
