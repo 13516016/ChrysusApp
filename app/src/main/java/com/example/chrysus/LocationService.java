@@ -39,7 +39,6 @@ public class LocationService implements LocationListener {
     private boolean isGPSEnabled;
     private boolean isNetworkEnabled;
     private boolean locationServiceAvailable;
-    Integer LOCATION_PERMISSION = 2;
 
     public static LocationService getLocationManager(Context context){
         if (instance == null) {
@@ -49,9 +48,15 @@ public class LocationService implements LocationListener {
     }
 
     public LocationService(Context context)     {
-
+        requestLocationPermission(context);
         initLocationService(context);
+    }
 
+    private void requestLocationPermission(Context context){
+        Integer LOCATION_PERMISSION = 2;
+        ActivityCompat.requestPermissions((Activity) context,
+                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+                LOCATION_PERMISSION);
     }
 
     @TargetApi(23)
@@ -60,9 +65,6 @@ public class LocationService implements LocationListener {
         if ( Build.VERSION.SDK_INT >= 23 &&
                 ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity) context,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION);
         }
 
         try   {
@@ -134,12 +136,13 @@ public class LocationService implements LocationListener {
     public String getCityName(Context context, double lat, double lngd){
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
         List<Address> addresses = null;
+        String cityName = "";
         try {
             addresses = geocoder.getFromLocation(lat, lngd, 1);
+            cityName = addresses.get(0).getLocality();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String cityName = addresses.get(0).getLocality();
 
         return cityName;
     }
