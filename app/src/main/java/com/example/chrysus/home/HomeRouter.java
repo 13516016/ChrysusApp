@@ -3,10 +3,10 @@ package com.example.chrysus.home;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.chrysus.payment.NFCPayActivity;
-import com.example.chrysus.payment.QRPayActivity;
-import com.example.chrysus.payment.ReceiveMoneyActivity;
-import com.example.chrysus.payment.SendMoneyActivity;
+import com.example.chrysus.payment.activity.NFCPayActivity;
+import com.example.chrysus.payment.activity.QRPayActivity;
+import com.example.chrysus.payment.activity.ReceiveMoneyActivity;
+import com.example.chrysus.payment.activity.SendMoneyActivity;
 
 public class HomeRouter {
     private Context context;

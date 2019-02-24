@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.chrysus.BaseController;
@@ -25,6 +26,8 @@ public class LoginController extends BaseController {
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    private View loginModal;
+    private ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
     public LoginController(Context context, View view) {
@@ -32,10 +35,13 @@ public class LoginController extends BaseController {
     }
 
     private void login(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password).
-                addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        loginModal.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()){
                             Intent intent = new Intent(context, MiddlewareActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -56,6 +62,8 @@ public class LoginController extends BaseController {
             String email = emailEditText.getText().toString();
             String password = passwordEditText.getText().toString();
             login(email, password);
+            loginModal.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
         }
     };
 
@@ -66,6 +74,8 @@ public class LoginController extends BaseController {
         emailEditText = view.findViewById(R.id.email_edit_text);
         passwordEditText = view.findViewById(R.id.password_edit_text);
         loginButton = view.findViewById(R.id.login_button);
+        loginModal = view.findViewById(R.id.login_modal);
+        progressBar = view.findViewById(R.id.login_progress_bar);
         loginButton.setOnClickListener(loginListener);
     }
 

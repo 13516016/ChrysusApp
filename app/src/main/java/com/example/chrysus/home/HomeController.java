@@ -1,7 +1,6 @@
 package com.example.chrysus.home;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,10 +16,6 @@ import com.example.chrysus.home.model.News;
 import com.example.chrysus.home.model.User;
 import com.example.chrysus.home.task.NewsAsyncTask;
 import com.example.chrysus.home.task.UserAsyncTask;
-import com.example.chrysus.payment.NFCPayActivity;
-import com.example.chrysus.payment.QRPayActivity;
-import com.example.chrysus.payment.ReceiveMoneyActivity;
-import com.example.chrysus.payment.SendMoneyActivity;
 import com.example.chrysus.util.ConfigReader;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -114,7 +109,7 @@ public class HomeController extends BaseController {
     private void getUserData(){
         try {
             Log.d("test", mAuth.getUid());
-            new UserAsync().execute(new ConfigReader(context).getValue("account_url")+mAuth.getUid());
+            new UserAsync().execute(new ConfigReader(context).getValue("search_by_uid_url")+mAuth.getUid());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (PackageManager.NameNotFoundException e) {

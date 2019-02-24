@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".payment.ReceiveMoneyActivity"></activity>
-        <activity android:name=".payment.SendMoneyActivity" />
-        <activity android:name=".payment.NFCPayActivity" />
-        <activity android:name=".payment.QRPayActivity" />
+        <activity android:name=".payment.activity.ReceiveMoneyActivity"></activity>
+        <activity android:name=".payment.activity.SendMoneyActivity" />
+        <activity android:name=".payment.activity.NFCPayActivity" />
+        <activity android:name=".payment.activity.QRPayActivity" />
         <activity
             android:name=".util.MiddlewareActivity"
             android:theme="@android:style/Theme.NoDisplay">
@@ -36,7 +36,9 @@
         </service>
 
         <meta-data android:name="news_url" android:value="http://198.12.106.137:5000/news/"/>
-        <meta-data android:name="account_url" android:value="http://198.12.106.137:5000/payment/"/>
+        <meta-data android:name="search_by_uid_url" android:value="http://198.12.106.137:5000/payment/firebase/"/>
+        <meta-data android:name="payment_url" android:value="http://198.12.106.137:5000/payment/pay"/>
+        <meta-data android:name="register_device_url" android:value="http://198.12.106.137:5000/payment/register"/>
     </application>
 
 
