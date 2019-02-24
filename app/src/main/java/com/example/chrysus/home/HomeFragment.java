@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.chrysus.BaseController;
 import com.example.chrysus.R;
+import com.example.chrysus.history.HistoryController;
 import com.example.chrysus.home.model.News;
 
 import java.util.ArrayList;
@@ -40,4 +41,6 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+
 }
