@@ -137,10 +137,7 @@ public class HomeController extends BaseController  {
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (lightSensor == null) {
             Toast.makeText(context, "The device has no light sensor !", Toast.LENGTH_SHORT).show();
-        } else {
-            Log.d("TEST", "TEST");
-        }
-
+        } 
         // max value for light sensor
         maxValue = lightSensor.getMaximumRange();
 
