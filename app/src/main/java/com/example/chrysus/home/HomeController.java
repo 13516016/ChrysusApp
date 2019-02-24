@@ -1,10 +1,6 @@
 package com.example.chrysus.home;
 
-//For light sensor
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.Intent;
@@ -19,6 +15,16 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+//For proximity sensor
+import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.chrysus.BaseController;
@@ -82,6 +88,7 @@ public class HomeController extends BaseController {
         super.registerView();
         newsRecyclerView = view.findViewById(R.id.news_rv);
         newsSectionLayout = view.findViewById(R.id.news_section);
+
         nfcPayLayout = view.findViewById(R.id.nfc_pay);
         sendMoneyLayout = view.findViewById(R.id.send_money);
         registerPaymentOnClickListener(new View[]{nfcPayLayout,  sendMoneyLayout});
@@ -91,8 +98,6 @@ public class HomeController extends BaseController {
         mAuth = FirebaseAuth.getInstance();
         temperatureTV = view.findViewById(R.id.temperature);
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        registerPaymentOnClickListener(new View[]{nfcPayLayout,sendMoneyLayout});
-
     }
 
     private void registerPaymentOnClickListener(View[] paymentViews) {
