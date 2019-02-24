@@ -48,7 +48,7 @@ public class User {
     public User(JSONObject json) throws JSONException {
         this.name = json.getString("name");
         this.balance = json.getInt("balance");
-        this.name = json.getString("name");
         this.phone = json.getString("phone");
+        this.address = json.getString("address");
     }
 }

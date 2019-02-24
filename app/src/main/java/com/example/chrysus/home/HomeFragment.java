@@ -47,5 +47,7 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ((HomeController) controller).toggleNewsSection();
+        ((HomeController) controller).getUserData();
+        ((HomeController) controller).getNewsData();
     }
 }

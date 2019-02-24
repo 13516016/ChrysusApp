@@ -30,9 +30,7 @@ public class HomeController extends BaseController {
     private HomeRouter homeRouter;
     private RecyclerView newsRecyclerView;
     private LinearLayout nfcPayLayout;
-    private LinearLayout qrPayLayout;
     private LinearLayout sendMoneyLayout;
-    private LinearLayout receiveMoneyLayout;
     private LinearLayout newsSectionLayout;
     private NewsDataAdapter newsDataAdapter;
     private TextView userFullnameTV;
@@ -50,9 +48,8 @@ public class HomeController extends BaseController {
     public View initializeView() {
         super.initializeView();
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false));
-        newsDataAdapter = new NewsDataAdapter(this.context, newsRecyclerView, getNewsData());
+        newsDataAdapter = new NewsDataAdapter(this.context, newsRecyclerView, new ArrayList<News>());
         newsRecyclerView.setAdapter(newsDataAdapter);
-        getUserData();
         setLocation();
         return this.view;
     }
@@ -64,10 +61,8 @@ public class HomeController extends BaseController {
         newsSectionLayout = view.findViewById(R.id.news_section);
 
         nfcPayLayout = view.findViewById(R.id.nfc_pay);
-        qrPayLayout = view.findViewById(R.id.qr_pay);
         sendMoneyLayout = view.findViewById(R.id.send_money);
-        receiveMoneyLayout = view.findViewById(R.id.receive_money);
-        registerPaymentOnClickListener(new View[]{nfcPayLayout, qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
+        registerPaymentOnClickListener(new View[]{nfcPayLayout,  sendMoneyLayout});
         userFullnameTV = view.findViewById(R.id.user_fullname);
         userBalanceTV = view.findViewById(R.id.user_balance);
         homeRouter = new HomeRouter(this.context);
@@ -90,19 +85,13 @@ public class HomeController extends BaseController {
             case R.id.nfc_pay:
                 homeRouter.navigateToNFCPayActivity();
                 break;
-            case R.id.qr_pay:
-                homeRouter.navigateToQRPayActivity();
-                break;
             case R.id.send_money:
                 homeRouter.navigateToSendMoneyActivity();
-                break;
-            case R.id.receive_money:
-                homeRouter.navigateToReceiveMoneyActivity();
                 break;
         }
     }
 
-    private ArrayList<News> getNewsData(){
+    public void getNewsData(){
         ArrayList<News> newsList = new ArrayList<>();
         try {
             String newsUrl = new ConfigReader(context).getValue("news_url");
@@ -112,10 +101,9 @@ public class HomeController extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return newsList;
     }
 
-    private void getUserData(){
+    public void getUserData(){
         try {
             Log.d("test", mAuth.getUid());
             new UserAsync().execute(new ConfigReader(context).getValue("search_by_uid_url")+mAuth.getUid());
@@ -130,9 +118,6 @@ public class HomeController extends BaseController {
         @Override
         protected void onPostExecute(ArrayList<News> news) {
             super.onPostExecute(news);
-            for (News newsObj: news){
-                Log.d("Huyu", newsObj.getTitle());
-            }
             newsDataAdapter.setNewsList(news);
             newsDataAdapter.notifyDataSetChanged();
         }

@@ -22,7 +22,8 @@ public class FCMRegisterService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        Log.d("TEST", remoteMessage.getData().toString());
+
+        Log.d("TEST", remoteMessage.getData().get("message"));
         Notification notification = new NotificationCompat.Builder(this)
                 .setPriority(1)
                 .setContentTitle(remoteMessage.getNotification().getTitle())

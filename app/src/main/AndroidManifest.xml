@@ -12,10 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".payment.activity.ReceiveMoneyActivity"></activity>
         <activity android:name=".payment.activity.SendMoneyActivity" />
         <activity android:name=".payment.activity.NFCPayActivity" />
-        <activity android:name=".payment.activity.QRPayActivity" />
         <activity android:name=".SettingsActivity" />
         <activity
             android:name=".util.MiddlewareActivity"
