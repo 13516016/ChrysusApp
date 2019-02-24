@@ -20,10 +20,7 @@ import com.example.chrysus.payment.ReceiveMoneyActivity;
 import com.example.chrysus.payment.SendMoneyActivity;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 
 public class HomeController extends BaseController {
@@ -120,5 +117,7 @@ public class HomeController extends BaseController {
     public void setLocation() {
         locationTrack = new LocationService(this.context);
         city = view.findViewById(R.id.city);
+        String cityName = locationTrack.getCityName(context,locationTrack.latitude,locationTrack.longitude);
+        city.setText(cityName);
     }
 }

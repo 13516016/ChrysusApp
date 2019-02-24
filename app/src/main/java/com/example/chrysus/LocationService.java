@@ -44,39 +44,18 @@ public class LocationService implements LocationListener {
         return instance;
     }
 
-    /**
-     * Local constructor
-     */
     public LocationService(Context context)     {
 
         initLocationService(context);
 
-        String cityName;
-        Log.d("LocationService created","berhasil");
-        Log.d("Latitude : ", String.valueOf(latitude));
-        Log.d("Longitude", String.valueOf(longitude));
-
-        // get city name from latitude and longitude
-//        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-//        List<Address> addresses = null;
-//        try {
-//            addresses = geocoder.getFromLocation(latitude, longitude, 1);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        cityName = addresses.get(0).getAddressLine(0);
-//
-//        Log.d("City : ", cityName);
     }
 
     @TargetApi(23)
     private void initLocationService(Context context) {
 
-
         if ( Build.VERSION.SDK_INT >= 23 &&
                 ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return  ;
         }
 
         try   {
@@ -88,10 +67,7 @@ public class LocationService implements LocationListener {
             this.isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             this.isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (forceNetwork) isGPSEnabled = false;
-
             if (!isNetworkEnabled && !isGPSEnabled)    {
-                // cannot get location
                 this.locationServiceAvailable = false;
             } else {
                 this.locationServiceAvailable = true;
@@ -110,10 +86,12 @@ public class LocationService implements LocationListener {
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                             MIN_TIME_BW_UPDATES,
                             MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+                    Log.d("Location", "not Null");
 
                     if (locationManager != null)  {
                         location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                         onLocationChanged(location);
+                        Log.d("location", "null");
                     }
                 }
             }
@@ -126,7 +104,6 @@ public class LocationService implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location)     {
-        // do stuff here with location object
         latitude = location.getLatitude();
         longitude = location.getLongitude();
     }
@@ -144,5 +121,19 @@ public class LocationService implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    // get city name from latitude and longitude
+    public String getCityName(Context context, double lat, double lngd){
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        List<Address> addresses = null;
+        try {
+            addresses = geocoder.getFromLocation(lat, lngd, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String cityName = addresses.get(0).getLocality();
+
+        return cityName;
     }
 }
