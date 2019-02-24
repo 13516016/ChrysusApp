@@ -4,14 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 import com.example.chrysus.BaseController;
-import com.example.chrysus.LocationTrack;
+import com.example.chrysus.LocationService;
 import com.example.chrysus.R;
 import com.example.chrysus.home.adapter.NewsDataAdapter;
 import com.example.chrysus.home.model.News;
@@ -21,7 +20,10 @@ import com.example.chrysus.payment.ReceiveMoneyActivity;
 import com.example.chrysus.payment.SendMoneyActivity;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 public class HomeController extends BaseController {
@@ -31,7 +33,7 @@ public class HomeController extends BaseController {
     private LinearLayout qrPayLayout;
     private LinearLayout sendMoneyLayout;
     private LinearLayout receiveMoneyLayout;
-    private LocationTrack locationTrack;
+    private LocationService locationTrack;
     private TextView city;
 
     public HomeController(Context context, View view) {
@@ -116,15 +118,7 @@ public class HomeController extends BaseController {
     }
 
     public void setLocation() {
-        locationTrack = new LocationTrack(this.context);
-
-        if (locationTrack.canGetLocation()) {
-            city = view.findViewById(R.id.city);
-            double longitude = locationTrack.getLongitude();
-            double latitude = locationTrack.getLatitude();
-            Log.d("location", String.valueOf(longitude));
-        } else {
-            locationTrack.showSettingsAlert();
-        }
+        locationTrack = new LocationService(this.context);
+        city = view.findViewById(R.id.city);
     }
 }
