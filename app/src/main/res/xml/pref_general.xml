@@ -8,13 +8,13 @@
 
     <SwitchPreference
         android:defaultValue="true"
-        android:key="example_switch"
+        android:key="news"
         android:summary="@string/pref_news_description_recommendations"
         android:title="@string/pref_news_recommendations" />
 
     <SwitchPreference
         android:defaultValue="true"
-        android:key="notifications_new_message"
+        android:key="notifications"
         android:title="@string/pref_title_new_message_notifications" />
     </PreferenceCategory>
 

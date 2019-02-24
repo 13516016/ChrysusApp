@@ -150,6 +150,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/news_section"
             style="@style/section_style">
             <TextView
                 style="@style/section_header_style"

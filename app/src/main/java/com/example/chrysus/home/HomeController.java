@@ -18,6 +18,7 @@ import com.example.chrysus.home.model.User;
 import com.example.chrysus.home.task.NewsAsyncTask;
 import com.example.chrysus.home.task.UserAsyncTask;
 import com.example.chrysus.util.ConfigReader;
+import com.example.chrysus.util.SharedPrefWrapper;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
@@ -32,13 +33,11 @@ public class HomeController extends BaseController {
     private LinearLayout qrPayLayout;
     private LinearLayout sendMoneyLayout;
     private LinearLayout receiveMoneyLayout;
+    private LinearLayout newsSectionLayout;
     private NewsDataAdapter newsDataAdapter;
     private TextView userFullnameTV;
     private TextView userBalanceTV;
     private FirebaseAuth mAuth;
-
-
-
 
     private LocationTrack locationTrack;
     private TextView city;
@@ -62,6 +61,8 @@ public class HomeController extends BaseController {
     public void registerView() {
         super.registerView();
         newsRecyclerView = view.findViewById(R.id.news_rv);
+        newsSectionLayout = view.findViewById(R.id.news_section);
+
         nfcPayLayout = view.findViewById(R.id.nfc_pay);
         qrPayLayout = view.findViewById(R.id.qr_pay);
         sendMoneyLayout = view.findViewById(R.id.send_money);
@@ -71,7 +72,6 @@ public class HomeController extends BaseController {
         userBalanceTV = view.findViewById(R.id.user_balance);
         homeRouter = new HomeRouter(this.context);
         mAuth = FirebaseAuth.getInstance();
-        registerPaymentOnClickListener(new View[]{nfcPayLayout,qrPayLayout, sendMoneyLayout, receiveMoneyLayout});
     }
 
     private void registerPaymentOnClickListener(View[] paymentViews) {
@@ -156,6 +156,14 @@ public class HomeController extends BaseController {
             Log.d("location", String.valueOf(longitude));
         } else {
             locationTrack.showSettingsAlert();
+        }
+    }
+
+    public void toggleNewsSection(){
+        if (!SharedPrefWrapper.getSettingsBoolean(context, "news")){
+            newsSectionLayout.setVisibility(View.GONE);
+        } else {
+            newsSectionLayout.setVisibility(View.VISIBLE);
         }
     }
 }
