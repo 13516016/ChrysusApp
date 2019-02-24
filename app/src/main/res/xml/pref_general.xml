@@ -14,8 +14,8 @@
 
     <SwitchPreference
         android:defaultValue="true"
-        android:key="notifications"
-        android:title="@string/pref_title_new_message_notifications" />
+        android:key="reminders"
+        android:title="Reminder" />
     </PreferenceCategory>
 
 

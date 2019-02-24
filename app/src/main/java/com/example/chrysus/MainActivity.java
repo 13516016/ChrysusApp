@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.chrysus.util.MiddlewareActivity;
+import com.example.chrysus.util.SharedPrefWrapper;
 import com.example.chrysus.util.pager.MainPagerAdapter;
 import com.example.chrysus.util.pager.NavigationViewPagerListener;
 import com.example.chrysus.util.pager.NonSwipeableViewPager;
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         ((MainController) mainController).setupViewPager(getSupportFragmentManager());
         ((MainController) mainController).registerNavigationListener();
         setSupportActionBar(((MainController) mainController).getToolbar());
-        ((MainController) mainController).scheduleAlarm();
     }
 
     @Override
@@ -47,5 +47,20 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.toolbar, menu);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setReminder();
+    }
+
+    private void setReminder(){
+        Boolean isReminderUsed = SharedPrefWrapper.getSettingsBoolean(this, "reminder");
+        if (isReminderUsed){
+            ((MainController) mainController).scheduleAlarm();
+        }else {
+            ((MainController) mainController).cancelAlarm();
+        }
     }
 }

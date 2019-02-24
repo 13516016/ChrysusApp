@@ -74,4 +74,11 @@ public class MainController extends BaseController {
                 1000, pIntent);
     }
 
+    public void cancelAlarm() {
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        final PendingIntent pIntent = PendingIntent.getBroadcast(context, AlarmReceiver.REQUEST_CODE,
+                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarm.cancel(pIntent);
+    }
 }
