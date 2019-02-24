@@ -16,6 +16,7 @@
         <activity android:name=".payment.activity.SendMoneyActivity" />
         <activity android:name=".payment.activity.NFCPayActivity" />
         <activity android:name=".payment.activity.QRPayActivity" />
+        <activity android:name=".SettingsActivity" />
         <activity
             android:name=".util.MiddlewareActivity"
             android:theme="@android:style/Theme.NoDisplay">

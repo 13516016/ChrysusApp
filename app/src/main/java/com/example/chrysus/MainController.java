@@ -49,4 +49,9 @@ public class MainController extends BaseController {
         Intent middlewareActivity = new Intent(context, MiddlewareActivity.class);
         context.startActivity(middlewareActivity);
     }
+
+    public void startSettingActivity(){
+        Intent settingActivity = new Intent(context, SettingsActivity.class);
+        context.startActivity(settingActivity);
+    }
 }

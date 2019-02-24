@@ -149,7 +149,6 @@ public class HomeController extends BaseController {
 
     public void setLocation() {
         locationTrack = new LocationTrack(this.context);
-
         if (locationTrack.canGetLocation()) {
             city = view.findViewById(R.id.city);
             double longitude = locationTrack.getLongitude();

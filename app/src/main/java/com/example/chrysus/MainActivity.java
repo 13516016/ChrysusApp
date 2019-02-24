@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.action_logout:
                 ((MainController) mainController).logout();
+                break;
+            case R.id.action_settings:
+                ((MainController) mainController).startSettingActivity();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

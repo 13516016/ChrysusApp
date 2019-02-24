@@ -50,4 +50,7 @@
     <string name="Phone_Number">Phone Number</string>
     <string name="Jenis_Kelamin">Gender</string>
     <string name="address">Address</string>
+    <string name="pref_news_description_recommendations">Enable news recommendations</string>
+    <string name="pref_news_recommendations">News Recommendation</string>
+    <string name="pref_title_new_message_notifications">Notification</string>
 </resources>
