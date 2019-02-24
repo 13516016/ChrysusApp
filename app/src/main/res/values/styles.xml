@@ -37,7 +37,7 @@
     </style>
 
     <style name="main_features_image_style">
-        <item name="android:padding">@dimen/small_gap</item>
+        <item name="android:padding">@dimen/regular_gap</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/feature_image</item>
         <item name="android:tint">@color/colorPrimary</item>
@@ -68,6 +68,22 @@
         <item name="android:layout_marginRight">@dimen/large_gap</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="action_bar" parent="white_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="profile_data">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_margin">@dimen/small_gap</item>
     </style>
 
 </resources>

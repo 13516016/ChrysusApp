@@ -1,5 +1,6 @@
 package com.example.chrysus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -8,13 +9,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.chrysus.util.MiddlewareActivity;
 import com.example.chrysus.util.pager.MainPagerAdapter;
 import com.example.chrysus.util.pager.NavigationViewPagerListener;
 import com.example.chrysus.util.pager.NonSwipeableViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
-    NonSwipeableViewPager viewPager;
     BaseController mainController;
 
     @Override
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_logout:
+                ((MainController) mainController).logout();
+        }
         return super.onOptionsItemSelected(item);
     }
 
